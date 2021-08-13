@@ -13,8 +13,11 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from dotenv import load_dotenv, find_dotenv
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(dotenv_path=find_dotenv(), verbose=False, override=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -80,7 +83,7 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME', 'test_db'),
         'USER': os.getenv('DB_USER', ''),
         'PASSWORD': os.getenv('DB_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', ''),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': 5432,
     }
 }
